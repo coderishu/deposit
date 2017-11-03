@@ -1,0 +1,29 @@
+sudo service mysqld start
+mysql -u root
+
+create database db1;
+
+use db1;
+
+create table company
+(
+id int,
+name varchar(20),
+location varchar(20)
+);
+
+insert into company values(1, 'acadgild','Bangalore');
+
+insert into company values(2, 'eduvista','Walnut');
+
+insert into company values(3, 'eduvista','Bangalore');
+
+grant all on *.* to 'root'@'localhost' with grant option;
+
+flush privileges;
+
+commit;
+
+exit;
+
+hadoop fs -ls /sqoopout

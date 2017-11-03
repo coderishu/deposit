@@ -1,0 +1,6 @@
+Multi-Mapper Import
+-------------------
+sqoop import --connect jdbc:mysql://localhost/db1 \
+--username 'root' -P --table 'company' --target-dir '/sqoopout' \
+--split-by id \
+-m 2;

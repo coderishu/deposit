@@ -1,0 +1,8 @@
+Hive import
+------------
+sqoop import --connect jdbc:mysql://localhost/db1 \
+--username 'root' -P --table 'company' --target-dir '/sqoopout' \
+--hive-import \
+-m 1;
+
+Go to hive and check table structure and content

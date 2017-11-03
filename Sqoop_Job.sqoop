@@ -1,0 +1,15 @@
+sqoop job --create mysqoopjob \
+-- \
+import --connect jdbc:mysql://localhost/db1 \
+--username 'root' -P --table 'company' --target-dir '/sqoopout' \
+--incremental append \
+--check-column id \
+-m 1;
+
+sqoop job --exec mysqoopjob
+
+insert into company values(7, 'xyz','abc');
+insert into company values(8, 'pqr','def');
+commit;
+
+sqoop job --exec mysqoopjob

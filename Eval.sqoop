@@ -1,0 +1,5 @@
+Eval
+----
+
+sqoop eval --connect jdbc:mysql://localhost/db1 \
+--username 'root' -P --query 'select name from company'

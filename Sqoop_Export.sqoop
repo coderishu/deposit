@@ -1,0 +1,9 @@
+Sqoop Export
+------------
+mysql -u root
+
+use db1;
+delete from company;
+commit;
+
+sqoop export --connect jdbc:mysql://localhost/db1 --username 'root' -P --table 'company' --export-dir '/sqoopout' --input-fields-terminated-by ',' -m 1 --columns id,name,location

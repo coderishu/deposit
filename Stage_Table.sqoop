@@ -1,0 +1,32 @@
+Using Stage Table
+-----------------
+use db1;
+
+describe company;
+
+create table staging_company
+(
+id int(11),
+name varchar(20),
+location varchar(20)
+);
+
+sqoop export --connect jdbc:mysql://localhost/db1 \
+--username 'root' -P --table 'company' --export-dir '/sqoopout' \
+--input-fields-terminated-by ',' -m 1 --columns id,name,location \
+--staging-table staging_company
+
+Sqoop requires that the structure of the staging table be the same as that of the target
+table. The number of columns and their types must be the same; otherwise, the export
+operation will fail. 
+
+When using a staging table, Sqoop will first export all data into this staging table instead
+of the main table that is present in the parameter --table. Sqoop opens a new transaction to move data from the staging table to the final destination, if and only if all
+parallel tasks successfully transfer data.
+
+As Sqoop will export data into the staging table and then move it
+to the final table, there is a period of time where all your data is stored twice in the
+database.
+
+As the data is first loaded somewhere else and then moved to the final table, using a
+staging table will always be slower than exporting directly to the final table.

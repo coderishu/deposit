@@ -1,0 +1,9 @@
+#cd /usr/local/flume/conf
+cd /home/acadgild/flume
+
+flume-ng agent -n agent1 -f spool_dir.conf
+flume-ng agent -n agent1 -f exec_source.conf
+flume-ng agent -n agent1 -f interceptor.conf
+flume-ng agent -n agent1 -f partition.conf
+flume-ng agent -n agent1 -f sequencefile.conf
+flume-ng agent -n agent1 -f fanout.conf

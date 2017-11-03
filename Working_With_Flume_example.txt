@@ -1,0 +1,7 @@
+we can start the Flume agent using the flume-ng command:
+
+flume-ng agent \
+--conf-file example.conf \
+--name agent1 \
+--conf $FLUME_HOME/conf \
+-Dflume.root.logger=INFO,console

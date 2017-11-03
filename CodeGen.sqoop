@@ -1,0 +1,5 @@
+CodeGen
+-------
+
+sqoop codegen --connect jdbc:mysql://localhost/db1 \
+--username 'root' -P --query 'select * from company where $CONDITIONS'
